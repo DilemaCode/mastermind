@@ -19,7 +19,7 @@ class _NewGameState extends State<NewGame> {
     Colors.amber,
     Colors.white,
   ];
-  List colors = [Colors.red, Colors.blue, Colors.green, Colors.amber];
+  List codemaker = [Colors.red, Colors.blue, Colors.green, Colors.amber];
   List rows = [
     {
       "row": 10,
@@ -117,7 +117,6 @@ class _NewGameState extends State<NewGame> {
   // double rowSelected = 0;
 
   // List circles
-  List<Widget> items = [];
 
   @override
   void initState() {
@@ -127,7 +126,9 @@ class _NewGameState extends State<NewGame> {
 
   // addItems() {}
   circles() {
-    rows.asMap().forEach((index, val) {
+    List<Widget> items = [];
+
+    rows.asMap().forEach((ii, val) {
       items.add(Container(
           margin: EdgeInsets.symmetric(vertical: 5),
           child: Row(
@@ -145,19 +146,21 @@ class _NewGameState extends State<NewGame> {
                   return Container(
                       margin: EdgeInsets.symmetric(horizontal: 5),
                       child: circle(
-                          selected: getSelected(i),
+                          selected: getSelected(val["row"], i),
                           color:
                               val["colors"].isEmpty ? null : val["colors"][i],
                           size: width * 0.1,
                           value: null,
                           onTap: () {
-                            print('\n\n\n asdasdlkjaskdaskd');
-                            print(val['pos']);
-                            print(val["colors"].isEmpty
-                                ? "vacio"
-                                : val["colors"][i]);
+                            // getSelected(i);
+                            setState(() {});
+                            // print('\n\n\n asdasdlkjaskdaskd');
+                            // print(val['pos']);
+                            // print(val["colors"].isEmpty
+                            //     ? "vacio"
+                            //     : val["colors"][i]);
                             selectedCircle.clear();
-                            selectedCircle.addAll([index, i]);
+                            selectedCircle.addAll([val["row"], i]);
                             // setState(() {
                             // });
                             // rows[index]["colors"][0]
@@ -170,16 +173,21 @@ class _NewGameState extends State<NewGame> {
     return items;
   }
 
-  getSelected(index) {
-    return selectedCircle == null
+  getSelected(row, index) {
+    print(selectedCircle);
+    print(row);
+    print(index);
+    // return false;
+    return selectedCircle.length == 0
         ? false
-        : rows[selectedCircle[0]]["colors"][selectedCircle[1]] == index;
+        : selectedCircle[0] == row && selectedCircle[1] == index;
   }
 
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
+    print(rows);
     return Scaffold(
         appBar: AppBar(
           title: Text("Master Mind"),
