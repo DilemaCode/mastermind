@@ -28,16 +28,20 @@ Widget circle(
               ? Colors.transparent
               : value == null ? Colors.transparent : color,
           border: Border.all(
-              color: selected ? Colors.blue : borderColor,
-              width: selected ? 1 : value == null ? 1 : 4),
+              color: selected
+                  ? Colors.blue
+                  : value == 1 || value == 2 ? Colors.transparent : borderColor,
+              width: selected ? 1 : value == null ? 0 : 4),
           borderRadius: BorderRadius.circular(size / 2),
         ),
         child: Center(
           child: Container(
-            width: size / 1.8,
-            height: size / 1.8,
+            width: value == null ? size / 1.8 : size / 2,
+            height: value == null ? size / 1.8 : size / 2,
             decoration: BoxDecoration(
-              color: selected ? Colors.blue : Colors.transparent,
+              color: selected
+                  ? Colors.blue
+                  : value == null ? Colors.transparent : borderColor,
               borderRadius: BorderRadius.circular(size / 2),
             ),
           ),

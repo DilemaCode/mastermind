@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mastermind/pages/createGame.dart';
 import 'package:mastermind/pages/newGame.dart';
 import 'package:mastermind/pages/welcome.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => Welcome(),
         "/NewGame": (context) => NewGame(),
+        "/CreateGame": (context) => CreateGame(),
       },
     );
   }
