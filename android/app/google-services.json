@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "762648970869",
+    "firebase_url": "https://mastermind-7eac7.firebaseio.com",
+    "project_id": "mastermind-7eac7",
+    "storage_bucket": "mastermind-7eac7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762648970869:android:e9ff35436b622f94839a3c",
+        "android_client_info": {
+          "package_name": "com.example.mastermind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762648970869-m9f3vls95gkmo3tl08bfrtr10ng5g79o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyH5wmHdM8Yl84qX-wmdK2_gipQjtli9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "762648970869-m9f3vls95gkmo3tl08bfrtr10ng5g79o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
