@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/widgets.dart';
 
 class FS {
   static final _db = Firestore.instance;
@@ -8,10 +7,18 @@ class FS {
   FS._internal();
 
   static getGameById(String id) async {
-    return _db.collection('games').document(id).get().then((data) async {
-      data.data['id'] = data.documentID;
-      return data.data;
+    Map _data;
+    await _db.collection('games').document(id).get().then((data) async {
+      if (data.exists) {
+        data.data['id'] = data.documentID;
+        _data = data.data;
+      } else {
+        _data = {"id": "error"};
+      }
+    }).catchError((onError) {
+      _data = {"id": "error"};
     });
+    return _data;
   }
 
   static List allGames = [];
@@ -26,7 +33,6 @@ class FS {
     });
     // return events;
   }
-
 
   static Future createUser(data) async {
     Map _user;

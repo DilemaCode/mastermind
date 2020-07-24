@@ -6,6 +6,9 @@ class AppDialog {
       {BuildContext context,
       Function onCancel,
       Function onAccept,
+      Widget child,
+      double height,
+      String cancelText,
       String title,
       String buttonLabel}) {
     showDialog(
@@ -15,7 +18,7 @@ class AppDialog {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0)), //this right here
             child: Container(
-              height: 180,
+              height: height == null ? 180 : height,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column(
@@ -34,11 +37,9 @@ class AppDialog {
                             ),
                           ],
                         )),
-                    // TextField(
-                    //   decoration: InputDecoration(
-                    //       border: InputBorder.none,
-                    //       hintText: 'What do you want to remember?'),
-                    // ),
+                    Container(
+                      child: child,
+                    ),
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
@@ -48,11 +49,13 @@ class AppDialog {
                         children: <Widget>[
                           RaisedButton(
                             onPressed: () {
-                              onCancel();
+                              if (onCancel != null) {
+                                onCancel();
+                              }
                               Navigator.pop(context);
                             },
                             child: Text(
-                              "Cancel",
+                              cancelText == null ? "Cancel" : cancelText,
                               style: TextStyle(color: Colors.white),
                             ),
                             elevation: 0,
